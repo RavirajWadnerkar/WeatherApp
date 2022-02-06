@@ -1,0 +1,5 @@
+//keys
+//Google place api key
+const placeApiKey = "AIzaSyAJJ4tYjHK5olN2eJnC-nUAb2lz8f0yggQ";
+//open weathermap key for current weather
+const weatherApiKey = "ef7577c3994a12e63531e2a76adaa7b7"

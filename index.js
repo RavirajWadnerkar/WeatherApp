@@ -1,14 +1,16 @@
 //keys
-//Google place api key
-const placeApiKey = "AIzaSyAJJ4tYjHK5olN2eJnC-nUAb2lz8f0yggQ";
+
 //open weathermap key for current weather
 const weatherApiKey = "ef7577c3994a12e63531e2a76adaa7b7"
+
+//Constant
+Kelvin = 273;
 
 //App data
 const weather = {};
 //object to 
 weather.temperature = {
-    unit : "Kelvin"
+    unit : "Celsius"
 }
 //allow location
 if('geolocation' in navigator){
@@ -32,7 +34,7 @@ function showError(error){
 function getWeather(latitude,longitude){
     let api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${weatherApiKey}`;
 
-    //console.log(api);
+    console.log(api);
     //get data with api
     fetch(api)
         .then(function(response){
@@ -41,9 +43,10 @@ function getWeather(latitude,longitude){
         })
         //store the data from api
         .then(function(data) {
-            weather.temperature.value = Math.floor(data.main.temp);
+            weather.temperature.value = Math.floor(data.main.temp - Kelvin);
             weather.description = data.weather[0].description;
             weather.city = data.name;
+            //weather.feels_like = 
             weather.country = data.sys.country;
         })
         //to display
@@ -54,7 +57,8 @@ function getWeather(latitude,longitude){
 //updating the values of html to display
 function displayWeather(){
     
-    document.querySelector(".temp-value p").innerHTML = `${weather.temperature.value}°K`;
+    document.querySelector(".title p").innerHTML = `Weather in ${weather.city}`;
+    document.querySelector(".temp-value p").innerHTML = `${weather.temperature.value}°C`;
     document.querySelector(".temp-description p").innerHTML = weather.description;
     document.querySelector(".location p").innerHTML = `${weather.city}, ${weather.country}`;
 }
