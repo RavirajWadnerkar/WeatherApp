@@ -46,7 +46,7 @@ function getWeather(latitude,longitude){
             weather.temperature.value = Math.floor(data.main.temp - Kelvin);
             weather.description = data.weather[0].description;
             weather.city = data.name;
-            //weather.feels_like = 
+            weather.feels_like = Math.floor(data.main.feels_like - Kelvin);
             weather.country = data.sys.country;
         })
         //to display
@@ -58,7 +58,8 @@ function getWeather(latitude,longitude){
 function displayWeather(){
     
     document.querySelector(".title p").innerHTML = `Weather in ${weather.city}`;
-    document.querySelector(".temp-value p").innerHTML = `${weather.temperature.value}°C`;
+    document.querySelector(".temp-value p").innerHTML = `${weather.temperature.value}℃`;
+    document.querySelector(".feels_like").innerHTML = `Feels like ${weather.feels_like}℃`;
     document.querySelector(".temp-description p").innerHTML = weather.description;
     document.querySelector(".location p").innerHTML = `${weather.city}, ${weather.country}`;
 }
