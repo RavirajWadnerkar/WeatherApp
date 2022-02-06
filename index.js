@@ -8,7 +8,7 @@ Kelvin = 273;
 
 //App data
 const weather = {};
-//object to 
+//object 
 weather.temperature = {
     unit : "Celsius"
 }
@@ -27,7 +27,7 @@ function setPosition(position){
 }
 //Ask the user to allow location
 function showError(error){
-    alert("Please allow location");
+    alert("Please allow location access.(If on phone, turn on GPS and refresh)");
 }
 
 //get weather
@@ -45,6 +45,7 @@ function getWeather(latitude,longitude){
         .then(function(data) {
             weather.temperature.value = Math.floor(data.main.temp - Kelvin);
             weather.description = data.weather[0].description;
+            weather.humidity = data.main.humidity;
             weather.city = data.name;
             weather.feels_like = Math.floor(data.main.feels_like - Kelvin);
             weather.country = data.sys.country;
@@ -59,7 +60,8 @@ function displayWeather(){
     
     document.querySelector(".title p").innerHTML = `Weather in ${weather.city}`;
     document.querySelector(".temp-value p").innerHTML = `${weather.temperature.value}℃`;
-    document.querySelector(".feels_like").innerHTML = `Feels like ${weather.feels_like}℃`;
+    document.querySelector(".humid p").innerHTML = `Humidity ${weather.humidity}%`
+    document.querySelector(".feels_like p").innerHTML = `Feels like ${weather.feels_like}℃`;
     document.querySelector(".temp-description p").innerHTML = weather.description;
     document.querySelector(".location p").innerHTML = `${weather.city}, ${weather.country}`;
 }
