@@ -1,0 +1,17 @@
+.title{
+    font-size: 27px;
+}
+.container{
+    margin-left: 40%;
+    
+}
+.weather-container{
+    margin: auto auto auto 0%;
+    width: 20%;
+    padding: 20px 30px;
+    border: 3px solid red;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+   
+}

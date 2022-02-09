@@ -59,7 +59,7 @@ function getWeather(latitude,longitude){
 function displayWeather(){
     
     document.querySelector(".title p").innerHTML = `Weather in ${weather.city}`;
-    document.querySelector(".temp-value p").innerHTML = `${weather.temperature.value}℃`;
+    document.querySelector(".temp-value p").innerHTML = `Temperature today ${weather.temperature.value}℃`;
     document.querySelector(".humid p").innerHTML = `Humidity ${weather.humidity}%`
     document.querySelector(".feels_like p").innerHTML = `Feels like ${weather.feels_like}℃`;
     document.querySelector(".temp-description p").innerHTML = weather.description;
